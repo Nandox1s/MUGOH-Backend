@@ -1,0 +1,17 @@
+:root{
+    --cor-preto-vyva: #0A0908;
+    --cor-verde-vyva: #B3E700;
+    --cor-cinza-vyva: #C1C1C2;
+    --cor-preto-esverdiado: #0F120F;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-top: 50px;
+    border-top: 3px solid var(--cor-verde-vyva);
+    color: var(--cor-cinza-vyva);
+    background-color: var(--cor-preto-vyva);
+}
