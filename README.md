@@ -19,6 +19,9 @@ Para o desenvolvimento do projeto, a ideia é construir a aplicação em um curt
 
   Linguagem utilizada para o back-end, encarregada da lógica do servidor, processamento de dados e integração com o front-end. Python foi escolhida pela simplicidade, legibilidade e ampla compatibilidade, tornando o desenvolvimento mais ágil e fácil de manter, mesmo em projetos que envolvem manipulação de dados ou comunicação com APIs.
 
+**React + Vite**  
+  Estrutura moderna e rápida para desenvolvimento web com hot reload e excelente performance.
+
 ---
 
 ## 👩‍💻 Autor
