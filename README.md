@@ -12,10 +12,10 @@ Ficamos na equipe de design, acompanhando a explicação sobre o processo de cri
 Para o desenvolvimento do projeto, a ideia é construir a aplicação em um curto espaço de tempo, focando em uma implementação ágil e funcional.
 
 **HTML, CSS e JavaScript**
-    Tecnologias essenciais para o desenvolvimento do front-end, responsáveis pela estrutura, estilo e interatividade do site. O HTML fornece a base estrutural, o CSS garante o design visual e a responsividade, enquanto o JavaScript adiciona funcionalidades dinâmicas e interativas à aplicação. Essa combinação permite criar interfaces modernas e eficientes de forma rápida.
+  Tecnologias essenciais para o desenvolvimento do front-end, responsáveis pela estrutura, estilo e interatividade do site. O HTML fornece a base estrutural, o CSS garante o design visual e a responsividade, enquanto o JavaScript adiciona funcionalidades dinâmicas e interativas à aplicação. Essa combinação permite criar interfaces modernas e eficientes de forma rápida.
 
 **Python**
-    Linguagem utilizada para o back-end, encarregada da lógica do servidor, processamento de dados e integração com o front-end. Python foi escolhida pela simplicidade, legibilidade e ampla compatibilidade, tornando o desenvolvimento mais ágil e fácil de manter, mesmo em projetos que envolvem manipulação de dados ou comunicação com APIs.
+  Linguagem utilizada para o back-end, encarregada da lógica do servidor, processamento de dados e integração com o front-end. Python foi escolhida pela simplicidade, legibilidade e ampla compatibilidade, tornando o desenvolvimento mais ágil e fácil de manter, mesmo em projetos que envolvem manipulação de dados ou comunicação com APIs.
 
 ---
 
