@@ -1,5 +1,5 @@
-#Projeto Site VYVA Nutrition
-##📝 Descrição
+# Projeto Site VYVA Nutrition
+## 📝 Descrição
 
 Participei de uma oficina chamada “Fábrica do Futuro: Onde humanos e IAs constroem software juntos”, que aconteceu durante o REC’n’Play. O principal objetivo da atividade era demonstrar que o uso 100% da inteligência artificial não é o ideal, já que, apesar de suas muitas vantagens, a IA também comete erros e depende da intervenção humana para alcançar resultados realmente eficazes. Durante a oficina, trabalhamos em um projeto fictício de um site de suplementos chamado VYVA Nutrition, que serviu como base para explorarmos as possibilidades de colaboração entre pessoas e ferramentas de IA.
 
@@ -7,7 +7,7 @@ Ficamos na equipe de design, acompanhando a explicação sobre o processo de cri
 
 ---
 
-##💻 Tecnologias Utilizadas
+## 💻 Tecnologias Utilizadas
 
 Para o desenvolvimento do projeto, a ideia é construir a aplicação em um curto espaço de tempo, focando em uma implementação ágil e funcional.
 
@@ -19,15 +19,15 @@ Linguagem utilizada para o back-end, encarregada da lógica do servidor, process
 
 ---
 
-##👩‍💻 Autor
+## 👩‍💻 Autor
 Ana Beatriz Gonçalo de Oliveira
 📧 anab.goncalo@gmail.com
-[![LinkedIn](https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg)](https://www.linkedin.com/in/ana-oliveira-dev)
+[LinkedIn](https://www.linkedin.com/in/ana-oliveira-dev)
 
 Fernando Vinícius Silva Sales
 📧 Fernandov.trabalho@outlook.com
-[![LinkedIn](https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg)](https://www.linkedin.com/in/fernandov-sales/)
+[LinkedIn](https://www.linkedin.com/in/fernandov-sales/)
 
 Wellerson Paulo Morais da Silva
 📧 wellersonmorais203@gmail.com
-[![LinkedIn](https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg)](https://www.linkedin.com/in/wellerson-paulo-morais-61289326b)
+[LinkedIn](https://www.linkedin.com/in/wellerson-paulo-morais-61289326b)
