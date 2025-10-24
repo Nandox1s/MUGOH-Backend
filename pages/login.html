@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/geral.css">
-    <link rel="shortcut icon" href="img/logo/logo-icone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/geral.css">
+    <link rel="stylesheet" href="../styles/loginCadastro.css">
+    <link rel="shortcut icon" href="../img/logo/logo-icone.ico" type="image/x-icon">
     <title>VYVA Nutrition</title>
 </head>
 <body>
     <header>
-        <img src="img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
-        <img class="menu-hamburguer" src="img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
+        <img src="../img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
+        <img class="menu-hamburguer" src="../img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
         <nav>
             <ul>
                 <li><a href="/">Início</a></li>
-                <li><a href="pages/funcionamento.html">Como Funciona</a></li>
-                <li><a href="pages/cadastro.html">Cadastre-se</a></li>
+                <li><a href="funcionamento.html">Como Funciona</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
             </ul>
             <button><a href="login.html">Entrar</a></button>
         </nav>
     </header>
+
+
+    <main>
+        <h1>Login</h1>
+
+        <form action="">
+            <label for="email">E-mail</label>
+            <div class="campo-input">
+                <img class="icone-input" src="../img/icones/octicon--person-16.svg" alt="Icone ilustrativo de pessoa">
+                <input type="email" placeholder="seuemail@email.com" required name="email" id="email" class="input-dados">
+            </div>
+
+            <label for="senha">Senha</label>
+            <div class="campo-input">
+                <img class="icone-input" src="../img/icones/uil--padlock.svg" alt="Icone ilustrativo de uma cadeado">
+                <input type="password" placeholder="********" required name="senha" id="senha" class="input-dados">
+            </div>
+
+            <button type="submit">Login</button>
+
+            <p>Não tem cadastro? <span>Cadastre-se</span></p>
+        </form>
+    </main>
 
 
     <footer>
@@ -27,6 +51,7 @@
     </footer>
 
     <!--    IMPORTS     -->
-    <script src="scripts/menuHamburguer.js"></script>
+    <script src="../scripts/menuHamburguer.js"></script>
+    <script src="../scripts/esconderImgInput.js"></script>
 </body>
 </html>
