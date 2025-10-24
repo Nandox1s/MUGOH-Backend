@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 CORS(app)  
 
-FIREBASE_API_KEY = "SUA_API_KEY_AQUI"
+FIREBASE_API_KEY = "AIzaSyCbxtE5U6OTKco6mXRoR_n-IrraKFxecuE"
 
 @app.route('/login', methods=['POST'])
 def login():
