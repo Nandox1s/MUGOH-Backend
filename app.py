@@ -7,6 +7,17 @@ CORS(app)
 
 FIREBASE_API_KEY = "AIzaSyCbxtE5U6OTKco6mXRoR_n-IrraKFxecuE"
 
+firebase_erros = {
+    "EMAIL_NOT_FOUND": "E-mail não encontrado.",
+    "INVALID_PASSWORD": "Senha incorreta.",
+    "USER_DISABLED": "Usuário desativado.",
+    "INVALID_EMAIL": "Formato de e-mail inválido.",
+    "MISSING_PASSWORD": "A senha é obrigatória.",
+    "TOO_MANY_ATTEMPTS_TRY_LATER": "Muitas tentativas. Tente novamente mais tarde.",
+    "EMAIL_EXISTS": "Este e-mail já está cadastrado.",
+    "WEAK_PASSWORD": "A senha deve ter pelo menos 6 caracteres."
+}
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -27,7 +38,9 @@ def login():
     resultado = response.json()
 
     if "error" in resultado:
-        return jsonify({"sucesso": False, "mensagem": resultado["error"]["message"]}), 401
+        codigo = resultado["error"]["message"]
+        mensagem_pt = firebase_erros.get(codigo, "Erro desconhecido.")
+        return jsonify({"sucesso": False, "mensagem": mensagem_pt}), 401
 
     return jsonify({
         "sucesso": True,
