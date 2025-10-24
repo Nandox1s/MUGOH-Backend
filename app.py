@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)  
 
 FIREBASE_API_KEY = "SUA_API_KEY_AQUI"
 
@@ -12,7 +14,7 @@ def login():
     senha = data.get('senha')
 
     if not email or not senha:
-        return jsonify({"erro": "Email e senha são obrigatórios"}), 400
+        return jsonify({"sucesso": False, "mensagem": "Email e senha são obrigatórios"}), 400
 
     url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FIREBASE_API_KEY}"
     payload = {
