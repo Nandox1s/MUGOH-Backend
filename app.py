@@ -3,9 +3,11 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
-CORS(app)  
+CORS(app)
 
 FIREBASE_API_KEY = "AIzaSyCbxtE5U6OTKco6mXRoR_n-IrraKFxecuE"
+FIREBASE_DB_URL = "https://banco-de-dados-a6728-default-rtdb.firebaseio.com"
+
 
 firebase_erros = {
     "EMAIL_NOT_FOUND": "E-mail não encontrado.",
@@ -61,6 +63,7 @@ def cadastro():
     if not nome or not telefone or not email or not senha:
         return jsonify({"sucesso": False, "mensagem": "Todos os campos são obrigatórios"}), 400
 
+    # Cadastro no Firebase Auth
     url = f"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FIREBASE_API_KEY}"
     payload = {
         "email": email,
@@ -76,10 +79,19 @@ def cadastro():
         mensagem_pt = firebase_erros.get(codigo, "Erro desconhecido.")
         return jsonify({"sucesso": False, "mensagem": mensagem_pt}), 401
 
+    # Salvar dados no Realtime Database
+    local_id = resultado["localId"]
+    id_token = resultado["idToken"]
+    db_url = f"{FIREBASE_DB_URL}/usuarios/{local_id}.json?auth={id_token}"
+    dados_usuario = {
+        "nome": nome,
+        "telefone": telefone
+    }
+    requests.put(db_url, json=dados_usuario)
+
     return jsonify({
         "sucesso": True,
-        "idToken": resultado["idToken"],
+        "idToken": id_token,
         "email": resultado["email"],
-        "localId": resultado["localId"]
+        "localId": local_id
     })
-
