@@ -1,0 +1,55 @@
+/*  IMPORTES */
+@import url("variaveis.css");
+
+
+
+main{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: 6vh auto;
+    padding: 5vh 0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 25vw;
+}
+
+label{
+    padding-top: 30px;
+}
+
+input{
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 1px solid var(--cor-cinza-vyva);
+    color: white;
+    background-color: transparent;
+}
+input:focus{
+    outline: none;
+    border-bottom: 1px solid var(--cor-verde-vyva);
+}
+
+form button{
+    width: 80%;
+    margin-top: 30px;
+    padding: 8px;
+    align-self: center;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: var(--cor-verde-vyva);
+}

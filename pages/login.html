@@ -3,23 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/geral.css">
-    <link rel="shortcut icon" href="img/logo/logo-icone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/geral.css">
+    <link rel="stylesheet" href="../styles/loginCadastro.css">
     <title>VYVA Nutrition</title>
 </head>
 <body>
     <header>
-        <img src="img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
-        <img class="menu-hamburguer" src="img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
+        <img src="../img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
+        <img class="menu-hamburguer" src="../img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
         <nav>
             <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="pages/funcionamento.html">Como Funciona</a></li>
-                <li><a href="pages/cadastro.html">Cadastre-se</a></li>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="funcionamento.html">Como Funciona</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
             </ul>
             <button><a href="login.html">Entrar</a></button>
         </nav>
     </header>
+
+
+    <main>
+        <h1>Login</h1>
+
+        <form action="">
+            <label for="email">E-mail</label>
+            <input type="email" placeholder="seuemail@email.com" required name="email" id="email">
+
+            <label for="senha">Senha*</label>
+            <input type="password" placeholder="********" required name="senha" id="senha">
+
+            <button type="button" onclick="Login()">Login</button>
+            <p id="mensagem"></p>
+        </form>
+    </main>
+
+    <script>
+    async function Login() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const mensagem = document.getElementById("mensagem");
+
+      try {
+        const resposta = await fetch("https://backend-r4hs.onrender.com/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({email, senha })
+        });
+
+        if (!resposta.ok) {
+          const erro = await resposta.json();
+          mensagem.textContent = "Erro: " + (erro.mensagem || "Falha na autenticação.");
+          mensagem.style.color = "red";
+          return;
+        }
+
+        const data = await resposta.json();
+        mensagem.textContent = "Login bem-sucedido!";
+        mensagem.style.color = "green";
+        console.log("Token:", data.idToken);
+        // Aqui você pode salvar o token ou redirecionar
+      } catch (err) {
+        mensagem.textContent = "Erro de conexão com o servidor.";
+        mensagem.style.color = "red";
+        console.error("Erro de rede:", err);
+      }
+    }
+  </script>
 
 
     <footer>
