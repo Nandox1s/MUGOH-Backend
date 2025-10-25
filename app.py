@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+import random
 
 app = Flask(__name__)
 CORS(app)
 
 FIREBASE_API_KEY = "AIzaSyCbxtE5U6OTKco6mXRoR_n-IrraKFxecuE"
 FIREBASE_DB_URL = "https://banco-de-dados-a6728-default-rtdb.firebaseio.com"
-
 
 firebase_erros = {
     "EMAIL_NOT_FOUND": "E-mail não encontrado.",
@@ -29,6 +29,7 @@ def login():
     if not email or not senha:
         return jsonify({"sucesso": False, "mensagem": "Email e senha são obrigatórios"}), 400
 
+    # Autenticar no Firebase Auth
     url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FIREBASE_API_KEY}"
     payload = {
         "email": email,
@@ -44,12 +45,32 @@ def login():
         mensagem_pt = firebase_erros.get(codigo, "Erro desconhecido.")
         return jsonify({"sucesso": False, "mensagem": mensagem_pt}), 401
 
+    # Buscar dados do usuário no Realtime Database
+    local_id = resultado["localId"]
+    id_token = resultado["idToken"]
+    db_url = f"{FIREBASE_DB_URL}/usuarios/{local_id}.json?auth={id_token}"
+    dados_response = requests.get(db_url)
+    dados_usuario = dados_response.json() if dados_response.ok else {}
+
+    vendas = dados_usuario.get("vendas", 0)
+    associacoes = dados_usuario.get("associacoes", 0)
+
+    # Calcular cashback
+    v = (vendas // 5) * 20
+    a = (associacoes // 30) * 3 + (associacoes // 50) * 50
+    cashback = v + a
+
     return jsonify({
         "sucesso": True,
         "idToken": resultado["idToken"],
         "refreshToken": resultado["refreshToken"],
         "email": resultado["email"],
-        "localId": resultado["localId"]
+        "localId": resultado["localId"],
+        "nome": dados_usuario.get("nome"),
+        "telefone": dados_usuario.get("telefone"),
+        "vendas": vendas,
+        "associacoes": associacoes,
+        "cashback": cashback
     })
 
 @app.route('/cadastro', methods=['POST'])
@@ -79,13 +100,25 @@ def cadastro():
         mensagem_pt = firebase_erros.get(codigo, "Erro desconhecido.")
         return jsonify({"sucesso": False, "mensagem": mensagem_pt}), 401
 
+    # Gerar dados aleatórios
+    vendas = random.randint(1, 200)
+    associacoes = random.randint(1, 200)
+
+    # Calcular cashback
+    v = (vendas // 5) * 20
+    a = (associacoes // 30) * 3 + (associacoes // 50) * 50
+    cashback = v + a
+
     # Salvar dados no Realtime Database
     local_id = resultado["localId"]
     id_token = resultado["idToken"]
     db_url = f"{FIREBASE_DB_URL}/usuarios/{local_id}.json?auth={id_token}"
     dados_usuario = {
         "nome": nome,
-        "telefone": telefone
+        "telefone": telefone,
+        "vendas": vendas,
+        "associacoes": associacoes,
+        "cashback": cashback
     }
     requests.put(db_url, json=dados_usuario)
 
