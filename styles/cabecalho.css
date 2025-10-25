@@ -33,6 +33,9 @@ ul li a{
     text-decoration: none;
     color: white;
 }
+ul li a:hover{
+    color: var(--cor-verde-vyva);
+}
 nav button{
     background-color: transparent;
     border: transparent;
@@ -47,6 +50,9 @@ nav button a{
     background-color: var(--cor-verde-vyva);
 }
 
+
+
+/*      MENOR QUE 800       */
 @media(max-width: 800px){
     .menu-hamburguer{
         display: block;

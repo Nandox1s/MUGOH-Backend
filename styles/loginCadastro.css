@@ -42,6 +42,18 @@ input:focus{
     border-bottom: 1px solid var(--cor-verde-vyva);
 }
 
+form div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+form div img{
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px; 
+}
+
 form button{
     width: 80%;
     margin-top: 30px;
@@ -52,4 +64,26 @@ form button{
     font-weight: bold;
     border: none;
     background-color: var(--cor-verde-vyva);
+}
+
+form p{
+    margin-top: 30px;
+    text-align: center;
+}
+span{
+    color: var(--cor-verde-vyva);
+}
+
+
+
+/*      MENOR QUE 800       */
+@media(max-width: 800px){
+    main{
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    form{
+        width: 30vw;
+    }
 }

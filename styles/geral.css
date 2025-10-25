@@ -21,7 +21,7 @@ body {
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
     color: white;
-    background-color: var(--cor-preto-esverdiado);
+    background-color: var(--cor-preto-avermelhado);
 }
 
 h1{
