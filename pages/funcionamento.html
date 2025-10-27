@@ -4,29 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/geral.css">
+    <link rel="stylesheet" href="../styles/infoPessoal.css">
     <link rel="shortcut icon" href="../img/logo/logo-icone.ico" type="image/x-icon">
     <title>VYVA Nutrition</title>
 </head>
 <body>
-    <header>
-        <img src="../img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
-        <img class="menu-hamburguer" src="../img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
-        <nav>
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="funcionamento.html">Como Funciona</a></li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
-            </ul>
-            <button><a href="login.html">Entrar</a></button>
-        </nav>
-    </header>
+    <div id="header"></div>
 
 
-    <footer>
-        <p>© 2025 VYVA Nutrition. Todos os direitos reservados.</p>
-    </footer>
+    <main>
+        <section class="info-meta">
+            <h1>Metas de Indicações</h1>
+            <img src="../img/icones/ri--target-fill.svg" alt="Icone ilustrativo de um alvo">
+            <p>Complete essas metas para ganhar recompensa</p>
+        </section>
 
+        <section class="meta">
+            <div class="txt-meta">
+                <h2>Meta 1</h2>
+                <p>Envie para 30 pessoas e ganhe R$ 3,00</p>
+            </div>
+            <div class="grafico-container">
+                <div class="grafico" id="graficoMeta1"></div>
+                <p class="porcent1">0.0%</p>
+            </div>
+        </section>
+
+        <section class="meta" id="meta-diferente">
+            <div class="txt-meta">
+                <h2>Meta 2</h2>
+                <p>5 compras no seu link e ganhe R$ 20,00</p>
+            </div>
+            <div class="grafico-container">
+                <div class="grafico" id="graficoMeta2"></div>
+                <p class="porcent2">0.0%</p>
+            </div>
+        </section>
+
+        <section class="meta">
+            <div class="txt-meta">
+                <h2>Meta 3</h2>
+                <p>50 indicações e ganhe R$ 50,00</p>
+            </div>
+            <div class="grafico-container">
+                <div class="grafico" id="graficoMeta3"></div>
+                <p class="porcent3">0.0%</p>
+            </div>
+        </section>
+    </main>
+
+    
+    <div id="footer"></div>
+
+    
     <!--    IMPORTS     -->
-    <script src="../scripts/menuHamburguer.js"></script>
+    <script src="../scripts/header.js"></script>
+    <script src="../scripts/footer.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../scripts/grafico.js"></script>
+    <script src="../scripts/porcentagemMetas.js"></script>
 </body>
 </html>

@@ -49,18 +49,7 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="../img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition" />
-    <img class="menu-hamburguer" src="../img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer" />
-    <nav>
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="funcionamento.html">Como Funciona</a></li>
-        <li><a href="cadastro.html">Cadastre-se</a></li>
-      </ul>
-      <button><a href="login.html">Entrar</a></button>
-    </nav>
-  </header>
+  <div id="header"></div>
 
   <main class="dashboard-container">
     <h1>Resumo da Plataforma</h1>
@@ -80,9 +69,7 @@
     </div>
   </main>
 
-  <footer>
-    <p>© 2025 VYVA Nutrition. Todos os direitos reservados.</p>
-  </footer>
+  <div id="footer"></div>
 
   <script>
   async function carregarDados() {
@@ -119,6 +106,7 @@
 
 
   <!-- IMPORTS -->
-  <script src="../scripts/menuHamburguer.js"></script>
+  <script src="../scripts/header.js"></script>
+  <script src="../scripts/footer.js"></script>
 </body>
 </html>

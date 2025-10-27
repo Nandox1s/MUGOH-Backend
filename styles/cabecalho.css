@@ -23,6 +23,7 @@ header img{
 nav{
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 nav ul{
     display: flex;
@@ -41,15 +42,15 @@ nav button{
     border: transparent;
 }
 nav button a{
-    text-decoration: none;
+    display: flex;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
     border-radius: 3px;
     color: var(--cor-preto-vyva);
     background-color: var(--cor-verde-vyva);
 }
-
 
 
 /*      MENOR QUE 800       */

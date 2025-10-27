@@ -9,18 +9,7 @@
     <title>VYVA Nutrition</title>
 </head>
 <body>
-    <header>
-        <img src="../img/logo/VYVA-NUTRITION-1.png" alt="Logo da marca VYVA Nutrition">
-        <img class="menu-hamburguer" src="../img/icones/material-symbols--menu-rounded.svg" alt="menu hamburguer">
-        <nav>
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="funcionamento.html">Como Funciona</a></li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
-            </ul>
-            <button><a href="login.html">Entrar</a></button>
-        </nav>
-    </header>
+    <div id="header"></div>
 
 
     <main>
@@ -40,61 +29,22 @@
             </div>
 
             <button type="button" onclick="Login()">Login</button>
-            <p>Não tem cadastro? <span>Cadastre-se</span></p>
+            <p>Não tem cadastro? <a class="txt-link" href="cadastro.html">Cadastre-se</a></p>
             <p id="mensagem"></p>
 
             
         </form>
     </main>
 
-    <script>
-    async function Login() {
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-  const mensagem = document.getElementById("mensagem");
 
-  try {
-    const resposta = await fetch("https://backend-r4hs.onrender.com/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, senha })
-    });
+    <div id="footer"></div>
 
-    if (!resposta.ok) {
-      const erro = await resposta.json();
-      mensagem.textContent = "Erro: " + (erro.mensagem || "Falha na autenticação.");
-      mensagem.style.color = "red";
-      return;
-    }
 
-    const data = await resposta.json();
-    mensagem.textContent = "Login bem-sucedido!";
-    mensagem.style.color = "green";
-
-    // ✅ Salvar dados no localStorage
-    localStorage.setItem("token", data.idToken);
-    localStorage.setItem("usuario", JSON.stringify({
-      email: data.email,
-      localId: data.localId
-    }));
-
-    // ✅ Redirecionar para o dashboard
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    mensagem.textContent = "Erro de conexão com o servidor.";
-    mensagem.style.color = "red";
-    console.error("Erro de rede:", err);
-  }
-}
-
-  </script>
-
-    <footer>
-        <p>© 2025 VYVA Nutrition. Todos os direitos reservados.</p>
-    </footer>
-
+    
     <!--    IMPORTS     -->
-    <script src="../scripts/menuHamburguer.js"></script>
+    <script src="../scripts/header.js"></script>
+    <script src="../scripts/footer.js"></script>
     <script src="../scripts/esconderImgInput.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>
