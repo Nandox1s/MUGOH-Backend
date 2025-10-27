@@ -2,7 +2,7 @@ async function carregarHeader() {
   const headerContainer = document.getElementById('header');
 
   try {
-    const resposta = await fetch('/partials/header.html');
+    const resposta = await fetch('../partials/header.html');
     if (!resposta.ok) throw new Error(`Erro ao carregar o header: ${resposta.status}`);
 
     const conteudo = await resposta.text();
