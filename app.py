@@ -59,6 +59,31 @@ def login():
         "localId": resultado.get("localId")
     }), 200
 
+@app.route('/animes', methods=['GET'])
+def listar_animes():
+    try:
+        response = requests.get(f"{FIREBASE_DB_URL}/animes.json")
+        if response.status_code != 200:
+            return jsonify({"erro": "Falha ao buscar animes"}), 500
+
+        dados = response.json()
+        lista = []
+
+        for anime_id, anime in dados.items():
+            lista.append({
+                "id": anime.get("id"),
+                "titulo": anime.get("titulo"),
+                "nota": anime.get("nota"),
+                "imagem": f"https://mugoh-backend.onrender.com{anime.get('foto')}" if anime.get("foto") else None
+            })
+
+        # Retorna os primeiros 6
+        return jsonify(lista[:6]), 200
+
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+
+
 @app.route('/registro', methods=['POST'])
 def registro():
     try:
