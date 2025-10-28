@@ -67,17 +67,21 @@ def listar_animes():
             return jsonify({"erro": "Falha ao buscar animes"}), 500
 
         dados = response.json()
-        lista = []
+        if not dados:
+            return jsonify([]), 200
 
+        lista = []
         for anime_id, anime in dados.items():
+            if not anime.get("titulo") or not anime.get("nota"):
+                continue  # ignora animes incompletos
+
             lista.append({
-                "id": anime.get("id"),
-                "titulo": anime.get("titulo"),
-                "nota": anime.get("nota"),
+                "id": anime.get("id", ""),
+                "titulo": anime.get("titulo", "Sem título"),
+                "nota": anime.get("nota", "N/A"),
                 "imagem": f"https://mugoh-backend.onrender.com{anime.get('foto')}" if anime.get("foto") else None
             })
 
-        # Retorna os primeiros 6
         return jsonify(lista[:6]), 200
 
     except Exception as e:
