@@ -100,33 +100,32 @@ def listar_animes():
 @app.route('/registro', methods=['POST'])
 def registro():
     try:
-        data = request.get_json()
-
-        tipo = data.get("tipo")
-        titulo = data.get("titulo")
+        tipo = request.form.get("tipo")
+        titulo = request.form.get("titulo")
 
         if not tipo or not titulo:
             return jsonify({"sucesso": False, "mensagem": "Título e Tipo são obrigatórios."}), 400
 
         anime_id = str(uuid.uuid4())
-        foto_url = data.get("foto")  # já vem como "/static/animes/arquivo.png"
+        foto_nome = request.form.get("foto")  # nome do arquivo selecionado no formulário
+        foto_url = f"/static/animes/{foto_nome}" if foto_nome else None
 
         anime = {
             "id": anime_id,
             "tipo": tipo,
             "titulo": titulo,
-            "estudio": data.get("estudio"),
-            "diretor": data.get("diretor"),
-            "genero": data.get("genero"),
-            "subgenero": data.get("subgenero"),
-            "estacao": data.get("estacao"),
-            "dataLancamento": data.get("dataLancamento"),
-            "origem": data.get("origem"),
-            "temporadas": data.get("temporadas"),
-            "episodios": data.get("episodios"),
-            "nota": data.get("nota"),
-            "avaliacao": data.get("avaliacao"),
-            "sinopse": data.get("sinopse"),
+            "estudio": request.form.get("estudio"),
+            "diretor": request.form.get("diretor"),
+            "genero": request.form.get("genero"),
+            "subgenero": request.form.get("subgenero"),
+            "estacao": request.form.get("estacao"),
+            "dataLancamento": request.form.get("dataLancamento"),
+            "origem": request.form.get("origem"),
+            "temporadas": request.form.get("temporadas"),
+            "episodios": request.form.get("episodios"),
+            "nota": request.form.get("nota"),
+            "avaliacao": request.form.get("avaliacao"),
+            "sinopse": request.form.get("sinopse"),
             "foto": foto_url
         }
 
