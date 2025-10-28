@@ -96,6 +96,31 @@ def listar_animes():
     except Exception as e:
         return jsonify({"erro": f"Erro interno: {str(e)}"}), 500
 
+@app.route('/animes-debug', methods=['GET'])
+def debug_animes():
+    try:
+        response = requests.get(f"{FIREBASE_DB_URL}/animes.json")
+        if response.status_code != 200:
+            return jsonify({"erro": "Falha ao buscar animes"}), 500
+
+        dados = response.json()
+        resultado = []
+
+        for anime_id, anime in dados.items():
+            item = {
+                "id": anime_id,
+                "tipo": type(anime).__name__,
+                "valido": isinstance(anime, dict),
+                "titulo": anime.get("titulo") if isinstance(anime, dict) else None,
+                "nota": anime.get("nota") if isinstance(anime, dict) else None,
+                "foto": anime.get("foto") if isinstance(anime, dict) else None
+            }
+            resultado.append(item)
+
+        return jsonify(resultado), 200
+
+    except Exception as e:
+        return jsonify({"erro": f"Erro interno: {str(e)}"}), 500
 
 
 @app.route('/registro', methods=['POST'])
