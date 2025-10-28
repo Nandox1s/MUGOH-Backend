@@ -67,32 +67,34 @@ def listar_animes():
             return jsonify({"erro": "Falha ao buscar animes"}), 500
 
         dados = response.json()
-        if not dados:
+        if not dados or not isinstance(dados, dict):
             return jsonify([]), 200
 
         lista = []
         for anime_id, anime in dados.items():
-            # Ignora registros incompletos
             if not isinstance(anime, dict):
-                continue
-            if not anime.get("titulo") or not anime.get("nota"):
-                continue
+                continue  # ignora valores inválidos
 
-            imagem_url = None
-            if anime.get("foto"):
-                imagem_url = f"https://mugoh-backend.onrender.com{anime.get('foto')}"
+            titulo = anime.get("titulo")
+            nota = anime.get("nota")
+            foto = anime.get("foto")
+
+            if not titulo or not nota:
+                continue  # ignora registros incompletos
+
+            imagem_url = f"https://mugoh-backend.onrender.com{foto}" if foto else None
 
             lista.append({
                 "id": anime.get("id", ""),
-                "titulo": anime.get("titulo", "Sem título"),
-                "nota": anime.get("nota", "N/A"),
+                "titulo": titulo,
+                "nota": nota,
                 "imagem": imagem_url
             })
 
         return jsonify(lista[:6]), 200
 
     except Exception as e:
-        return jsonify({"erro": str(e)}), 500
+        return jsonify({"erro": f"Erro interno: {str(e)}"}), 500
 
 
 
