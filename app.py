@@ -72,20 +72,28 @@ def listar_animes():
 
         lista = []
         for anime_id, anime in dados.items():
+            # Ignora registros incompletos
+            if not isinstance(anime, dict):
+                continue
             if not anime.get("titulo") or not anime.get("nota"):
-                continue  # ignora animes incompletos
+                continue
+
+            imagem_url = None
+            if anime.get("foto"):
+                imagem_url = f"https://mugoh-backend.onrender.com{anime.get('foto')}"
 
             lista.append({
                 "id": anime.get("id", ""),
                 "titulo": anime.get("titulo", "Sem título"),
                 "nota": anime.get("nota", "N/A"),
-                "imagem": f"https://mugoh-backend.onrender.com{anime.get('foto')}" if anime.get("foto") else None
+                "imagem": imagem_url
             })
 
         return jsonify(lista[:6]), 200
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
+
 
 
 @app.route('/registro', methods=['POST'])
