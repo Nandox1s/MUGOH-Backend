@@ -96,90 +96,42 @@ def listar_animes():
     except Exception as e:
         return jsonify({"erro": f"Erro interno: {str(e)}"}), 500
 
-@app.route('/animes-debug', methods=['GET'])
-def debug_animes():
-    try:
-        response = requests.get(f"{FIREBASE_DB_URL}/animes.json")
-        if response.status_code != 200:
-            return jsonify({"erro": "Falha ao buscar animes"}), 500
-
-        dados = response.json()
-        resultado = []
-
-        for anime_id, anime in dados.items():
-            item = {
-                "id": anime_id,
-                "tipo": type(anime).__name__,
-                "valido": isinstance(anime, dict),
-                "titulo": anime.get("titulo") if isinstance(anime, dict) else None,
-                "nota": anime.get("nota") if isinstance(anime, dict) else None,
-                "foto": anime.get("foto") if isinstance(anime, dict) else None
-            }
-            resultado.append(item)
-
-        return jsonify(resultado), 200
-
-    except Exception as e:
-        return jsonify({"erro": f"Erro interno: {str(e)}"}), 500
-
 
 @app.route('/registro', methods=['POST'])
 def registro():
     try:
-        tipo = request.form.get("tipo")
-        titulo = request.form.get("titulo")
+        data = request.get_json()
+
+        tipo = data.get("tipo")
+        titulo = data.get("titulo")
 
         if not tipo or not titulo:
             return jsonify({"sucesso": False, "mensagem": "Título e Tipo são obrigatórios."}), 400
 
-        estudio = request.form.get("estudio")
-        diretor = request.form.get("diretor")
-        genero = request.form.get("genero")
-        subgenero = request.form.get("subgenero")
-        estacao = request.form.get("estacao")
-        data_lancamento = request.form.get("dataLancamento")
-        origem = request.form.get("origem")
-        temporadas = request.form.get("temporadas")
-        episodios = request.form.get("episodios")
-        nota = request.form.get("nota")
-        avaliacao = request.form.get("avaliacao")
-        sinopse = request.form.get("sinopse")
-
-        foto = request.files.get("foto")
-        foto_url = None
-
-        if foto:
-            if not os.path.exists("static/animes"):
-                os.makedirs("static/animes")
-            nome_arquivo = f"{uuid.uuid4().hex}_{foto.filename}"
-            caminho = os.path.join("static/animes", nome_arquivo)
-            foto.save(caminho)
-            foto_url = f"/static/animes/{nome_arquivo}"
-
         anime_id = str(uuid.uuid4())
+        foto_url = data.get("foto")  # já vem como "/static/animes/arquivo.png"
 
         anime = {
             "id": anime_id,
             "tipo": tipo,
             "titulo": titulo,
-            "estudio": estudio,
-            "diretor": diretor,
-            "genero": genero,
-            "subgenero": subgenero,
-            "estacao": estacao,
-            "dataLancamento": data_lancamento,
-            "origem": origem,
-            "temporadas": temporadas,
-            "episodios": episodios,
-            "nota": nota,
-            "avaliacao": avaliacao,
-            "sinopse": sinopse,
+            "estudio": data.get("estudio"),
+            "diretor": data.get("diretor"),
+            "genero": data.get("genero"),
+            "subgenero": data.get("subgenero"),
+            "estacao": data.get("estacao"),
+            "dataLancamento": data.get("dataLancamento"),
+            "origem": data.get("origem"),
+            "temporadas": data.get("temporadas"),
+            "episodios": data.get("episodios"),
+            "nota": data.get("nota"),
+            "avaliacao": data.get("avaliacao"),
+            "sinopse": data.get("sinopse"),
             "foto": foto_url
         }
 
         id_token = request.headers.get("Authorization", "").replace("Bearer ", "")
         response = requests.post(f"{FIREBASE_DB_URL}/animes.json?auth={id_token}", json=anime)
-
 
         if response.status_code == 200:
             return jsonify({
@@ -194,5 +146,3 @@ def registro():
     except Exception as e:
         return jsonify({"sucesso": False, "mensagem": str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
