@@ -113,7 +113,9 @@ def registro():
             "foto": foto_url
         }
 
-        response = requests.post(f"{FIREBASE_DB_URL}/animes.json", json=anime)
+        id_token = request.headers.get("Authorization", "").replace("Bearer ", "")
+        response = requests.post(f"{FIREBASE_DB_URL}/animes.json?auth={id_token}", json=anime)
+
 
         if response.status_code == 200:
             return jsonify({
