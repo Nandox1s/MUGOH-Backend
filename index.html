@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/geral.css">
-    <link rel="shortcut icon" href="img/logo/logo-icone.ico" type="image/x-icon">
-    <title>VYVA Nutrition</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streaming X - Assine já</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .login-btn {
+      background-color: #444;
+    }
+
+    .signup-btn {
+      background-color: #e50914;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-    <div id="header"></div>
+  <!-- Cabeçalho com logo -->
+  <!-- <header>Logo e navegação futura</header> -->
 
-    <main>
-        <img src="img/banners/Banner-1.png" alt="Banner da VYVA Nutrition">
-    </main>
+  <!-- Seção principal de propaganda -->
+  <main>
+    <h1>Assista onde quiser. Cancele quando quiser.</h1>
+    <p>Tenha acesso ilimitado a filmes, séries e muito mais. Assine agora e aproveite!</p>
 
-    <div id="footer"></div>
+    <div class="button-container">
+      <a href="pages/login.html" class="btn login-btn">Entrar</a>
+      <a href="signup.html" class="btn signup-btn">Assine já</a>
+    </div>
+  </main>
 
-    
-    <!--    IMPORTS     -->
-    <script src="scripts/header.js"></script>
-    <script src="../scripts/footer.js"></script>
+  <!-- Rodapé com links úteis -->
+  <!-- <footer>Rodapé com redes sociais e termos</footer> -->
 </body>
 </html>

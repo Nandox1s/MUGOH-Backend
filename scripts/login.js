@@ -4,35 +4,36 @@ async function Login() {
   const mensagem = document.getElementById("mensagem");
 
   try {
-    const resposta = await fetch("https://backend-r4hs.onrender.com/login", {
+    const resposta = await fetch("https://mugoh-backend.onrender.com/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({ email, senha })
     });
 
-    if (!resposta.ok) {
-      const erro = await resposta.json();
-      mensagem.textContent = "Erro: " + (erro.mensagem || "Falha na autenticação.");
+    const resultado = await resposta.json();
+
+    if (resultado.sucesso) {
+      mensagem.style.color = "lightgreen";
+      mensagem.innerText = resultado.mensagem;
+
+      // Armazena o token (opcional, se for usar autenticação nas próximas páginas)
+      localStorage.setItem("token", resultado.idToken);
+      localStorage.setItem("email", resultado.email);
+
+
+      // Redireciona após 1 segundo
+      setTimeout(() => {
+        window.location.href = "home.html"; // Altere para a página desejada
+      }, 1000);
+    } else {
       mensagem.style.color = "red";
-      return;
+      mensagem.innerText = resultado.mensagem;
     }
-
-    const data = await resposta.json();
-    mensagem.textContent = "Login bem-sucedido!";
-    mensagem.style.color = "green";
-
-    // ✅ Salvar dados no localStorage
-    localStorage.setItem("token", data.idToken);
-    localStorage.setItem("usuario", JSON.stringify({
-      email: data.email,
-      localId: data.localId
-    }));
-
-    // ✅ Redirecionar para o dashboard
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    mensagem.textContent = "Erro de conexão com o servidor.";
-    mensagem.style.color = "red";
-    console.error("Erro de rede:", err);
+  } catch (erro) {
+    console.error("Erro ao conectar com o backend:", erro);
+    mensagem.style.color = "orange";
+    mensagem.innerText = "Erro de conexão com o servidor.";
   }
 }

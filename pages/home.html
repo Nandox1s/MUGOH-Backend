@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streaming X - Catálogo</title>
+  <link rel="stylesheet" href="../styles/home.css" />
+</head>
+<body>
+  <header>
+    Streaming X
+    <button id="botaoAdmin" onclick="window.location.href='admin.html'">Admin</button>
+    <button class="logout-btn" onclick="logout()">Sair</button>
+  </header>
+
+  <div class="catalogo">
+    <div class="categoria">
+      <div class="titulo-categoria">
+        <h2>Catálogo de Animes</h2>
+        <button class="ver-todos-btn" onclick="window.location.href='catalogo-completo.html'">Ver todos</button>
+      </div>
+      <div class="rolagem" id="animeContainer">
+        <!-- Os animes serão inseridos aqui via home.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/home.js"></script>
+</body>
+</html>

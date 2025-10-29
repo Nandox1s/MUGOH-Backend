@@ -1,50 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/geral.css">
-    <link rel="stylesheet" href="../styles/loginCadastro.css">
-    <link rel="shortcut icon" href="../img/logo/logo-icone.ico" type="image/x-icon">
-    <title>VYVA Nutrition</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Streaming X</title>
+  <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-    <div id="header"></div>
-
-
-    <main>
-        <h1>Login</h1>
-
-        <form action="">
+  <h2>Entrar na sua conta</h2>
+  <form action="">
             <label for="email">E-mail</label>
-            <div class="campo-input">
-                <img class="icone-input" src="../img/icones/octicon--person-16.svg" alt="Icone ilustrativo de pessoa">
+            <div class="campo-input">        
                 <input type="email" placeholder="seuemail@email.com" required name="email" id="email" class="input-dados">
             </div>
 
             <label for="senha">Senha</label>
             <div class="campo-input">
-                <img class="icone-input" src="../img/icones/uil--padlock.svg" alt="Icone ilustrativo de uma cadeado">
                 <input type="password" placeholder="********" required name="senha" id="senha" class="input-dados">
             </div>
 
             <button type="button" onclick="Login()">Login</button>
-            <p>Não tem cadastro? <a class="txt-link" href="cadastro.html">Cadastre-se</a></p>
             <p id="mensagem"></p>
+  </form> 
 
-            
-        </form>
-    </main>
-
-
-    <div id="footer"></div>
-
-
-    
-    <!--    IMPORTS     -->
-    <script src="../scripts/header.js"></script>
-    <script src="../scripts/footer.js"></script>
-    <script src="../scripts/esconderImgInput.js"></script>
-    <script src="../scripts/login.js"></script>
+  <script src="../scripts/login.js"></script>
+  
 </body>
 </html>

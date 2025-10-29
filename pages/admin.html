@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Cadastro de Animes</title>
+  <link rel="stylesheet" href="../styles/admin.css" />
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.replace("login.html");
+    } else {
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.style.display = "block";
+      });
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Painel do Administrador</h1>
+    <button onclick="logout()">Sair</button>
+  </header>
+
+  <main>
+    <form id="animeForm">
+      <label>Foto: <input type="file" name="foto" accept="image/*" /></label>
+      <label>Tipo: <input type="text" name="tipo" required /></label>
+      <label>Título da Obra: <input type="text" name="titulo" required /></label>
+      <label>Estúdio / Editora: <input type="text" name="estudio" /></label>
+      <label>Diretor: <input type="text" name="diretor" /></label>
+      <label>Gênero: <input type="text" name="genero" /></label>
+      <label>Subgênero: <input type="text" name="subgenero" /></label>
+      <label>Estação: 
+        <select name="estacao">
+          <option value="spring">Primavera</option>
+          <option value="summer">Verão</option>
+          <option value="fall">Outono</option>
+          <option value="winter">Inverno</option>
+        </select>
+      </label>
+      <label>Data de Lançamento: <input type="date" name="dataLancamento" /></label>
+      <label>Origem: <input type="text" name="origem" /></label>
+      <label>Nº de Temporadas: <input type="number" name="temporadas" min="1" /></label>
+      <label>Nº de Episódios: <input type="number" name="episodios" min="1" /></label>
+      <label>Nota: <input type="number" name="nota" step="0.1" min="0" max="10" /></label>
+      <label>Avaliação Pessoal: <input type="text" name="avaliacao" /></label>
+      <label>Sinopse:
+        <textarea name="sinopse" rows="5"></textarea>
+      </label>
+      <button type="submit">Cadastrar Anime</button>
+    </form>
+  </main>
+
+  <script src="../scripts/admin.js"></script>
+</body>
+</html>
