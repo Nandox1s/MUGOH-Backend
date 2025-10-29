@@ -73,16 +73,16 @@ def listar_animes():
         lista = []
         for anime_id, anime in dados.items():
             if not isinstance(anime, dict):
-                continue  # ignora valores inválidos
+                continue
 
             titulo = anime.get("titulo")
             nota = anime.get("nota")
             foto = anime.get("foto")
 
             if not titulo or not nota:
-                continue  # ignora registros incompletos
+                continue
 
-            imagem_url = f"https://mugoh-backend.onrender.com{foto}" if foto else None
+            imagem_url = foto if foto else None  # ← usa a URL externa diretamente
 
             lista.append({
                 "id": anime.get("id", ""),
